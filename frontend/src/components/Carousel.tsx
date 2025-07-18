@@ -42,7 +42,6 @@ const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 export default function Carousel({
   items = DEFAULT_ITEMS,
-  baseWidth = 300,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
