@@ -17,28 +17,29 @@
  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
- font-weight: 500;
- color: #646cff;
- text-decoration: inherit;
-}
-a:hover {
- color: #535bf2;
+/* Fix alignment issues */
+* {
+  box-sizing: border-box;
 }
 
 body {
  margin: 0;
- display: flex;
- place-items: center;
+ padding: 0;
  min-width: 320px;
  min-height: 100vh;
+ font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-h1 {
- font-size: 3.2em;
- line-height: 1.1;
+/* Ensure proper container alignment */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
+/* Fix button alignment */
 button {
  border-radius: 8px;
  border: 1px solid transparent;
@@ -49,13 +50,42 @@ button {
  background-color: #1a1a1a;
  cursor: pointer;
  transition: border-color 0.25s;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
 }
+
 button:hover {
  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Ensure links are properly aligned */
+a {
+ font-weight: 500;
+ color: #646cff;
+ text-decoration: inherit;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+}
+a:hover {
+ color: #535bf2;
+}
+
+/* Fix heading alignment */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+h1 {
+ font-size: 3.2em;
+ line-height: 1.1;
 }
 
 @media (prefers-color-scheme: light) {
@@ -71,3 +101,411 @@ button:focus-visible {
  }
 }
 
+/* Placeholder image styles */
+.placeholder-image {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Grid alignment fixes */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Flexbox alignment fixes */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: light) {
+ :root {
+ color: #213547;
+ background-color: #ffffff;
+ }
+ a:hover {
+ color: #747bff;
+ }
+ button {
+ background-color: #f9f9f9;
+ }
+}
+
+/* App.css - Main application styles and alignment fixes */
+
+/* Reset and base styles */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Container alignment fixes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Grid alignment improvements */
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Flexbox alignment improvements */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Responsive spacing */
+.space-x-2 > * + * {
+  margin-left: 0.5rem;
+}
+
+.space-x-3 > * + * {
+  margin-left: 0.75rem;
+}
+
+.space-x-4 > * + * {
+  margin-left: 1rem;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Button alignment fixes */
+button, .button, a[class*="btn"], a[class*="bg-"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Card alignment */
+.card, [class*="rounded"], [class*="shadow"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image placeholder styles */
+.placeholder-img {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  min-height: 200px;
+}
+
+/* Placehold.co image styling */
+img[src*="placehold.co"] {
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+img[src*="placehold.co"]:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure proper aspect ratios for different image sizes */
+.hero-image {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.feature-image {
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.profile-image {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.gallery-image {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+/* Avatar styles */
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Ensure consistent line heights */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Fix overflow issues */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .flex-col-mobile {
+    flex-direction: column;
+  }
+  
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-1-mobile {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Animation improvements */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transform {
+  transform: translateZ(0);
+}
+
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:-translate-y-2:hover {
+  transform: translateY(-0.5rem);
+}
+
+/* Focus states for accessibility */
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Ensure proper stacking context */
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+/* Fix any layout shifts */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Slideshow specific styles */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+}
+
+.slideshow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.slideshow-content {
+  position: relative;
+  z-index: 20;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideshow-nav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 50;
+}
+
+.slideshow-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slideshow-dot.active {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.slideshow-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
