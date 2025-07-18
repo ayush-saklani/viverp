@@ -1,0 +1,28 @@
+Hostname
+dpg-d1t2lqumcj7s73b3db1g-a
+
+Port
+5432
+
+Database
+viverp_db
+
+Username
+admin
+
+Password
+rtO5yUOrnSCHUSA7mZJrd5IGRyEpcUNd
+
+
+Internal Database URL
+postgresql://admin:rtO5yUOrnSCHUSA7mZJrd5IGRyEpcUNd@dpg-d1t2lqumcj7s73b3db1g-a/viverp_db
+
+
+External Database URL
+postgresql://admin:rtO5yUOrnSCHUSA7mZJrd5IGRyEpcUNd@dpg-d1t2lqumcj7s73b3db1g-a.singapore-postgres.render.com/viverp_db
+
+
+PSQL Command
+PGPASSWORD=rtO5yUOrnSCHUSA7mZJrd5IGRyEpcUNd psql -h dpg-d1t2lqumcj7s73b3db1g-a.singapore-postgres.render.com -U admin viverp_db
+
+

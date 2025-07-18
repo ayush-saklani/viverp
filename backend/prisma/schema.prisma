@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  teacher
+  student
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}
+
+model User {
+  id             String          @id @default(cuid())
+  email          String          @unique
+  fullName       String
+  password       String
+  role           Role
+  contactNumber  String?
+  address        String?
+  dateOfBirth    DateTime?       @db.Date
+  gender         Gender?
+  refreshToken   String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  teacherDetails TeacherDetails?
+  studentDetails StudentDetails?
+  attendances    Attendance[]
+  exams          Exam[]
+  fees           Fees[]
+}
+
+model TeacherDetails {
+  id            String    @id @default(cuid())
+  employeeId    String?   @unique
+  qualification String?
+  experience    String?
+  subject       String?
+  dateOfJoining DateTime? @db.Date
+  salary        Float?
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id])
+}
+
+model StudentDetails {
+  id         String  @id @default(cuid())
+  rollNumber String? @unique
+  grade      String?
+  userId     String  @unique
+  user       User    @relation(fields: [userId], references: [id])
+}
+
+enum AttendanceStatus {
+  Present
+  Absent
+}
+
+model Attendance {
+  id        String         @id @default(cuid())
+  userId    String
+  user      User           @relation(fields: [userId], references: [id])
+  date      DateTime       @db.Date
+  status    AttendanceStatus
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model Exam {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  subject   String
+  marks     Int
+  grade     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum FeesStatus {
+  Paid
+  Unpaid
+}
+
+model Fees {
+  id        String     @id @default(cuid())
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+  amount    Float
+  status    FeesStatus
+  dueDate   DateTime   @db.Date
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
