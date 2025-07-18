@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, type PanInfo, useMotionValue, useTransform } from "framer-motion";
+import { motion, type PanInfo, useMotionValue } from "framer-motion";
 import React, { type JSX } from "react";
 
 export interface CarouselItem {
@@ -38,7 +38,6 @@ const DEFAULT_ITEMS: CarouselItem[] = [
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 0; // No gap for full-screen images
-const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 export default function Carousel({
   items = DEFAULT_ITEMS,
@@ -69,7 +68,7 @@ export default function Carousel({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const x = useMotionValue(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isResetting, setIsResetting] = useState<boolean>(false);
+  // Removed unused isResetting state
 
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -111,14 +110,12 @@ export default function Carousel({
     pauseOnHover,
   ]);
 
-  const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
 
   const handleAnimationComplete = () => {
     if (loop && currentIndex === carouselItems.length - 1) {
-      setIsResetting(true);
       x.set(0);
       setCurrentIndex(0);
-      setTimeout(() => setIsResetting(false), 50);
+      // Removed isResetting logic
     }
   };
 
